@@ -52,3 +52,7 @@ void Player::takeDamage(void)
 	_health--;
 	return ;
 }
+
+char Player::getType(void) const {
+	return 'p';
+}

@@ -36,6 +36,8 @@ public:
 	Shoot* shootMissile(void);
 	void direction(int key_input, int yMax, int xMax);
 	void takeDamage(void);
+
+	virtual char getType(void) const;
 };
 
 #endif
