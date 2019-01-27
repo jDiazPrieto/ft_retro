@@ -1,20 +1,20 @@
-CPP        = clang++
-FLAGS    = -Wextra -Wall -Werror
-NAME    = ft_retro
+CPP		= clang++
+FLAGS	= -Wextra -Wall -Werror
+NAME	= fixed
 
-SRC        = srcs/$(wildcard *.cpp)
-HEADERS    = includes/$(wildcard *.hpp)
-OBJS    = $(SRC:.cpp=.o)
+SRC		= $(wildcard *.cpp)
+HEADERS	= $(wildcard *.hpp)
+OBJS	= $(SRC:.cpp=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJS) $(HEADERS)
-    $(CPP) $(FLAGS) $(OBJS) -lncurses -o $(NAME)
+	$(CPP) $(FLAGS) $(OBJS) -o $(NAME)
 
 clean:
-    /bin/rm -f *.o
+	/bin/rm -f *.o
 
 fclean: clean
-    /bin/rm -f $(NAME)
+	/bin/rm -f $(NAME)
 
 re: fclean all

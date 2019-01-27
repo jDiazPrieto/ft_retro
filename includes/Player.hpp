@@ -6,13 +6,12 @@
 /*   By: jdiaz <jdiaz@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/26 15:17:14 by jdiaz             #+#    #+#             */
-/*   Updated: 2019/01/26 17:40:55 by ztisnes          ###   ########.fr       */
+/*   Updated: 2019/01/26 19:26:22 by ztisnes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PLAYER_HPP
 #define PLAYER_HPP
-#define SHIP '>'
 
 #include "GameObject.hpp"
 #include "Display.hpp"
