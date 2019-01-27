@@ -27,6 +27,10 @@ private:
 	//constructor
 	Board(void);
 
+	//update Display objects' coordinates
+	void updateShooters(int yMax, int xMax);
+    void updateEnemies(int yMax, int xMax);
+
 public:
 	
 	//constructors

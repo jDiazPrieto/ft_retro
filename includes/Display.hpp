@@ -50,8 +50,6 @@ public:
 
 
 private:
-	void updateShooters(int yMax, int xMax);
-	void updateEnemies(int yMax, int xMax);
 };
 
 #endif
