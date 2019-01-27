@@ -60,9 +60,17 @@ void Board::addDisplay(Display* const display) {
 ** If the player collides with an enemy, we return true and the game is over
 */
 bool Board::update(int yMax, int xMax) {
-    updateShooters(yMax, xMax);
-    updateEnemies(yMax, xMax);
+    this->updateShooters(yMax, xMax);
+    this->updateEnemies(yMax, xMax);
     return false;
+}
+
+void Board::updateShooters(int yMax, int xMax) {
+    for (int i = xMax; i >= 0; i --) {
+        for (int j = 0; j < yMax; i++) {
+            if ()
+        }
+    }
 }
 
 void Board::draw(void) const {
