@@ -80,8 +80,8 @@ void GameObject::createShooter(void) {
 ** Once all the entities on the board are updated, we add a new Enemy
 */
 void GameObject::update(int key, int yMax, int xMax) {
-    this->_player->direction(key);
-    this->_done = this->_board->update(yMax, xMax);
+    this->_done = this->_board->update(yMax, xMax, this->_player, key);
+    //this->_player->direction(key);
     if (key == (int)' ')
         this->createShooter();
     this->createEnemy();

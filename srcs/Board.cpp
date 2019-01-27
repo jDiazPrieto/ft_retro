@@ -59,12 +59,27 @@ void Board::addDisplay(Display* const display) {
 ** If there is a collision, we delete both objects from the board
 ** If the player collides with an enemy, we return true and the game is over
 */
-bool Board::update(int yMax, int xMax) {
+bool Board::update(int yMax, int xMax, Player *player, int key) {
     bool result;
+
     this->updateShooters(yMax, xMax);
     result = this->updateEnemies(yMax, xMax);
-    result = this->updatePlayer(yMax, xMax);
+    if (!result)
+        result = this->updatePlayer(yMax, xMax, key, player);
     return result;
+}
+
+bool Board::updatePlayer(int yMax, int xMax, int key, Player* player) {
+    int player_x, player_y;
+
+    player_x = player->getXCord();
+    player_y = player->getYCord();
+    player->direction(key, yMax, xMax);
+    if (this->_board[player->getYCord()][player->getXCord()])
+        return (true);
+    this->_board[player->getYCord()][player->getXCord()] = player;
+    this->_board[player_y][player_x] = NULL;
+    return false;
 }
 
 /*

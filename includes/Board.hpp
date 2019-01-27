@@ -15,6 +15,7 @@
 
 #include <string>
 #include "Display.hpp"
+#include "Player.hpp"
 
 class Board {
 
@@ -30,7 +31,7 @@ private:
 	//update Display objects' coordinates
 	void updateShooters(int yMax, int xMax);
     bool updateEnemies(int yMax, int xMax);
-	bool updatePlayer(int yMax, int xMax);
+	bool updatePlayer(int yMax, int xMax, int key, Player* player);
 	bool handleCollision(Display *a, Display * b);
 
 public:
@@ -44,7 +45,7 @@ public:
 	Board & operator=(Board const & src);
 
 	void addDisplay(Display* const display);
-	bool update(int yMax, int xMax);
+	bool update(int yMax, int xMax, Player *player, int key);
 	void draw(void) const;
 
 	// getter functions
