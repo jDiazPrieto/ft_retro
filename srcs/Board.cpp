@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   Board.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdiaz <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: jdiaz <jdiaz@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/26 23:48:56 by jdiaz             #+#    #+#             */
-/*   Updated: 2019/01/26 23:49:13 by jdiaz            ###   ########.fr       */
+/*   Updated: 2019/01/27 09:18:48 by ztisnes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/Board.hpp"
-#include "../includes/Display.hpp"
+#include "Board.hpp"
+#include "Display.hpp"
 
 Board::Board(void) : _board(NULL), _yMax(0), _xMax(0) {
     return;
-} 
+}
 
 Board::Board(int yMax, int xMax) : _board(NULL), _yMax(yMax), _xMax(xMax) {
     this->_board = new Display** [yMax];
@@ -56,7 +56,7 @@ void Board::addDisplay(Display* const display) {
 ** In this function we update the coordinates of all the objects on the board.
 ** We begin by updating all the shooter objects while checking if they collide with any enemies.
 ** Then we update all the enemy objects and check if they collide with the player of with shooters
-** If there is a collision, we delete both objects from the board 
+** If there is a collision, we delete both objects from the board
 ** If the player collides with an enemy, we return true and the game is over
 */
 bool Board::update(void) {

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   GameObject.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdiaz <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: jdiaz <jdiaz@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/26 22:25:15 by jdiaz             #+#    #+#             */
-/*   Updated: 2019/01/26 22:25:33 by jdiaz            ###   ########.fr       */
+/*   Updated: 2019/01/27 09:18:30 by ztisnes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/GameObject.hpp"
+#include "GameObject.hpp"
 
 GameObject::GameObject(void) : _player(NULL), _board(NULL), _score(0), _done(false) {
     return;
@@ -76,7 +76,7 @@ void GameObject::createShooter(void) {
 ** In this function we will move all the entities on the board and check collisions
 ** If the user presses the space bar, we create a new missile and add it to the board
 ** If the user moves the player, we update the player's direction variables
-** After taking the user's input, we call the board's update function 
+** After taking the user's input, we call the board's update function
 ** Once all the entities on the board are updated, we add a new Enemy
 */
 void GameObject::update(int key) {
@@ -115,5 +115,3 @@ Board* GameObject::getBoard(void) const {
 int GameObject::getScore(void) const {
     return this->_score;
 }
-
-

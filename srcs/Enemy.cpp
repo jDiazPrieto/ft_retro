@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   Enemy.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdiaz <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: jdiaz <jdiaz@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/26 16:55:40 by jdiaz             #+#    #+#             */
-/*   Updated: 2019/01/26 16:55:51 by jdiaz            ###   ########.fr       */
+/*   Updated: 2019/01/27 09:18:34 by ztisnes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/Enemy.hpp"
+#include "Enemy.hpp"
 
 //constructors
 Enemy::Enemy(void) : Display() {
@@ -37,7 +37,7 @@ Enemy & Enemy::operator=(Enemy const & rhs) {
     this->_yDirection = rhs.getYDirection();
     this->_xDirection = rhs.getXDirection();
     return *this;
-}   
+}
 
 char Enemy::getType(void) const {
     return ('e');

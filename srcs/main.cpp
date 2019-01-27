@@ -3,26 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdiaz <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: jdiaz <jdiaz@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/26 17:58:47 by jdiaz             #+#    #+#             */
-/*   Updated: 2019/01/26 18:32:03 by jdiaz            ###   ########.fr       */
+/*   Updated: 2019/01/27 09:49:23 by ztisnes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/GameObject.hpp"
+#include "GameObject.hpp"
 #include <ncurses.h>
 #include <unistd.h>
 
-void	beginGame(WINDOW *win, GameObject game, int yMax, int Xmax)
+void	beginGame(WINDOW *win, GameObject game, int yMax, int xMax)
 {
 	int key_pressed;
 
 	while (!game.isDone()) {
 		//wait for user to press a key
 		key_pressed = getch();
-		
-		// update all entities on board (move missiles, enemies, player or create new entities) 
+
+		// update all entities on board (move missiles, enemies, player or create new entities)
 		game.update(key_pressed);
 
 		//Once all the characters are updated, we can re draw the board
@@ -52,9 +52,9 @@ int	main(void)
 	win = newwin(yMax - 1 , xMax - 1, 0, 0);
 	//get arrow inputs
 	keypad(win, true);
-	
+
 	beginGame(win, game, yMax, xMax);
-	
+
 	//game is over
 	getch();
 	endwin();

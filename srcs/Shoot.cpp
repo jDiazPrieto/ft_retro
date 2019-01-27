@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   Shoot.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdiaz <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: jdiaz <jdiaz@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/26 18:26:23 by jdiaz             #+#    #+#             */
-/*   Updated: 2019/01/26 18:26:24 by jdiaz            ###   ########.fr       */
+/*   Updated: 2019/01/27 09:18:56 by ztisnes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/Shoot.hpp"
+#include "Shoot.hpp"
 
 Shoot::Shoot(void) : Display() {
     return;
