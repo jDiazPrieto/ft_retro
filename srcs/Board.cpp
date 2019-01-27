@@ -45,8 +45,26 @@ Board & Board::operator=(Board const & src) {
     return *this;;
 }
 
-void addDisplay(Display* const display) {
-    
+void Board::addDisplay(Display* const display) {
+    int y, x;
+    y = display->getYCord();
+    x = display->getXCord();
+    this->_board[y][x] = display;
+}
+
+/*
+** In this function we update the coordinates of all the objects on the board.
+** We begin by updating all the shooter objects while checking if they collide with any enemies.
+** Then we update all the enemy objects and check if they collide with the player of with shooters
+** If there is a collision, we delete both objects from the board 
+** If the player collides with an enemy, we return true and the game is over
+*/
+bool Board::update(void) {
+    return false;
+}
+
+void Board::draw(void) const {
+    return;
 }
 
 //getter functions

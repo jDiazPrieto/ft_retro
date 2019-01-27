@@ -39,7 +39,7 @@ public:
 
 	void addDisplay(Display* const display);
 	bool update(void);
-	void draw(void);
+	void draw(void) const;
 
 	// getter functions
 	Display*** getBoard(void) const;
