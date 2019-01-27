@@ -29,18 +29,21 @@ private:
     Shoot   *_shooters;
     int     **_board;
     int     _score;
+    bool    _done;
+
+    GameObject(void);
 
 public:
 
     //constructors
-    GameObject(void);
+    GameObject(int Ymax, int Xmax);
     GameObject(GameObject const & src);
     ~GameObject(void);
 
+    bool isDone(void) const;
     void createEnemy(int y, int x);
     void createShooter(int y, int x);
-    void getInput(int key);
-    void update(void);
+    void update(int key);
     void draw(void) const;
 };
 

@@ -16,17 +16,17 @@
 class Display {
 
 protected:
-
+	//constructor
+	Display(void);
+	
 	int _yCord;
 	int _xCord;
 	int _yDirection;
 	int	_xDirection;
 
 public:
-
-	//constructor
-	Display(void);
-	Display(int y, int x, int yDirection, int xDirection);
+	//constructors
+	Display(int yCord, int xCord, int yDirection, int xDirection);
 	Display(Display & src);
 	~Display(void);
 
@@ -40,6 +40,8 @@ public:
 
 	void update(void) const;
 	void draw(void) const;
+
+private:
 };
 
 #endif

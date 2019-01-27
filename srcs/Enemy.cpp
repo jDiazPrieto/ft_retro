@@ -17,7 +17,7 @@ Enemy::Enemy(void) : Display() {
     return;
 }
 
-Enemy::Enemy(int yPos, int xPos) : Display(yPos, xPos) {
+Enemy::Enemy(int yPos, int xPos) : Display(yPos, xPos, 0, -1) {
     //generate random position here
     return;
 }

@@ -10,4 +10,24 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef SHOOT_HPP
+# define SHOOT_HPP
 
+# include "Display.hpp"
+
+class Shoot : public Display {
+
+public:
+
+    //constructors
+    Shoot(int yCord, int xCord);
+    Shoot(Shoot & src);
+    ~Shoot(void);
+
+private:
+
+     //constructors
+    Shoot(void);  
+};
+
+#endif
