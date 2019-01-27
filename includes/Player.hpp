@@ -34,7 +34,7 @@ public:
 
 	//Member functions of Player
 	Shoot* shootMissile(void);
-	void direction(int key_input);
+	void direction(int key_input, int yMax, int xMax);
 	void takeDamage(void);
 };
 
