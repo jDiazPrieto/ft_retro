@@ -27,7 +27,7 @@ public:
     //operator overloads
     Shoot & operator=(Shoot const & src);
 
-    char getType(void) const;
+    virtual char getType(void) const;
     
 private:
      //constructors

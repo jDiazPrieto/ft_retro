@@ -28,7 +28,7 @@ public:
 
     Enemy & operator=(Enemy const & rhs);
 
-    char getType(void) const;
+    virtual char getType(void) const;
 };
 
 #endif

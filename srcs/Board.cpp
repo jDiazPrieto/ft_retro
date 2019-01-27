@@ -52,6 +52,17 @@ void Board::addDisplay(Display* const display) {
     this->_board[y][x] = display;
 }
 
+bool Board::handleCollision(Display *a, Display *b) {
+    if (a->getType() == 'p' || b->getType() == 'p') {
+        return true;
+    }
+    else {
+        delete a;
+        delete b;
+    }
+    return false;
+}
+
 /*
 ** In this function we update the coordinates of all the objects on the board.
 ** We begin by updating all the shooter objects while checking if they collide with any enemies.

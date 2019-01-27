@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Shoot.hpp"
+#include "../includes/Shoot.hpp"
 
 Shoot::Shoot(void) : Display() {
     return;
@@ -38,5 +38,5 @@ Shoot & Shoot::operator=(Shoot const & rhs) {
 }
 
 char Shoot::getType(void) const {
-    return 'o';
+    return 's';
 }
