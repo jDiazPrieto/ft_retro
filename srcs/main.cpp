@@ -38,15 +38,17 @@ int	main(void)
 	int yMax, xMax;
 	WINDOW *win;
 
-	//inititate ncurses window
+	//inititate ncurses
 	initscr();
 	cbreak();
 	noecho();
-	
 	//get window dimensions
 	getmaxyx(stdscr, yMax, xMax);
+
+	//initiate gameobject
 	GameObject game(yMax, xMax);
 
+	//create window
 	win = newwin(yMax - 1 , xMax - 1, 0, 0);
 	//get arrow inputs
 	keypad(win, true);
