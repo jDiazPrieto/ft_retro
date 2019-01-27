@@ -6,7 +6,7 @@
 /*   By: jdiaz <jdiaz@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/26 17:04:38 by jdiaz             #+#    #+#             */
-/*   Updated: 2019/01/27 09:18:41 by ztisnes          ###   ########.fr       */
+/*   Updated: 2019/01/27 11:17:33 by ztisnes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,11 @@ Display & Display::operator=(Display const & src) {
 
 //setter functions
 void Display::setYCord(int y) {
-    this->_yCord = y;
+	this->_yCord = y;
 }
 
 void Display::setXCord(int x) {
-    this->_xCord = x;
+	this->_xCord = x;
 }
 
 //getter functions

@@ -28,7 +28,7 @@ $(NAME): $(OBJS) $(HEADERS)
 	$(CPP) $(FLAGS) $(OBJS) -o $@ -lncurses
 
 clean:
-	/bin/rm -f *.o
+	/bin/rm -rf obj/*.o
 
 fclean: clean
 	/bin/rm -f $(NAME)

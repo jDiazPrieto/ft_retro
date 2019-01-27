@@ -6,7 +6,7 @@
 /*   By: jdiaz <jdiaz@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/26 15:17:14 by jdiaz             #+#    #+#             */
-/*   Updated: 2019/01/27 10:18:35 by ztisnes          ###   ########.fr       */
+/*   Updated: 2019/01/27 11:48:48 by ztisnes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ public:
 	~Player(void);
 
 	//Member functions of Player
-	Player* shootMissile(void);
+	Shoot* shootMissile(void);
 	void direction(int key_input);
 	void takeDamage(void);
 };

@@ -6,7 +6,7 @@
 /*   By: jdiaz <jdiaz@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/26 16:24:56 by jdiaz             #+#    #+#             */
-/*   Updated: 2019/01/27 10:18:37 by ztisnes          ###   ########.fr       */
+/*   Updated: 2019/01/27 11:37:40 by ztisnes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,15 +35,15 @@ public:
 	Display & operator=(Display const & src);
 
 	// setter functions
-	void setYCord(void);
-	void setXCord(void);
+	void setYCord(int y);
+	void setXCord(int x);
 
 	//getter functions
 	int	getYCord(void) const;
 	int getXCord(void) const;
 	int getYDirection(void) const;
 	int getXDirection(void) const;
-	virtual char getType(void) const = 0;
+	char getType(void) const;
 
 	void update(void) ;
 	void draw(void) const;
