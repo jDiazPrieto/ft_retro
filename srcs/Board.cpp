@@ -60,15 +60,62 @@ void Board::addDisplay(Display* const display) {
 ** If the player collides with an enemy, we return true and the game is over
 */
 bool Board::update(int yMax, int xMax) {
+    bool result;
     this->updateShooters(yMax, xMax);
-    this->updateEnemies(yMax, xMax);
+    result = this->updateEnemies(yMax, xMax);
+    result = this->updatePlayer(yMax, xMax);
+    return result;
+}
+
+/*
+** Here we move each enemy object one step to the left. If they collide with a shooter, we delete both.
+** If it collides with the player then the game is over and we return true.
+** If the enemy is at the beginning of the board, we delete it. 
+*/
+bool Board::updateEnemies(int yMax, int xMax) {
+    for (int i = 0; i < xMax; i++) {
+        for (int j = 0; j < yMax; j++) {
+            if (this->_board[j][i]->getType() == 'e') {
+                if (i == 0) {
+                    delete this->_board[j][i];
+                }
+                else if (this->_board[j][i - 1]) {
+                    if (this->handleCollision(this->_board[j][i], this->_board[j][i - 1]))
+                        return true;
+                    this->_board[j][i - 1] = NULL;
+                }
+                else {
+                    this->_board[j][i]->update();
+                    this->_board[j][i - 1] = this->_board[j][i];
+                }
+                this->_board[j][i] = NULL;
+            }
+        }
+    }    
     return false;
 }
 
+/*
+** Here we move each shooter object one step to the right. If they collide with an Enemy, we delete both.
+** If the shooter is at the end of the board (xMax - 1), we delete it. 
+*/
 void Board::updateShooters(int yMax, int xMax) {
-    for (int i = xMax; i >= 0; i --) {
+    for (int i = xMax - 2; i >= 0; i --) {
         for (int j = 0; j < yMax; i++) {
-            if ()
+            if (this->_board[j][i]->getType() == '-') {
+                if (i == xMax - 2) {
+                    delete this->_board[j][i];
+                }
+                else if (this->_board[j][i + 1]->getType() == 'e') {
+                    this->handleCollision(this->_board[j][i], this->_board[j][i + 1]);
+                    this->_board[j][i + 1] = NULL; 
+                }
+                else {
+                    this->_board[j][i]->update();
+                    this->_board[j][i + 1] = this->_board[j][i];
+                }
+                this->_board[j][i] = NULL;
+            }
         }
     }
 }

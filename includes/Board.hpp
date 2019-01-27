@@ -29,7 +29,9 @@ private:
 
 	//update Display objects' coordinates
 	void updateShooters(int yMax, int xMax);
-    void updateEnemies(int yMax, int xMax);
+    bool updateEnemies(int yMax, int xMax);
+	bool updatePlayer(int yMax, int xMax);
+	bool handleCollision(Display *a, Display * b);
 
 public:
 	
