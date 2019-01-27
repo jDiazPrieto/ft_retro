@@ -6,7 +6,7 @@
 /*   By: jdiaz <jdiaz@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/26 15:17:14 by jdiaz             #+#    #+#             */
-/*   Updated: 2019/01/27 10:01:41 by ztisnes          ###   ########.fr       */
+/*   Updated: 2019/01/27 10:15:48 by ztisnes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 #include "GameObject.hpp"
 #include "Display.hpp"
+#include "Shoot.hpp"
 
 class Player : public Display
 {
