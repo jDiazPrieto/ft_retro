@@ -38,7 +38,7 @@ public:
 	Board & operator=(Board const & src);
 
 	void addDisplay(Display* const display);
-	bool update(void);
+	bool update(int yMax, int xMax);
 	void draw(void) const;
 
 	// getter functions

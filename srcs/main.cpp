@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "GameObject.hpp"
+#include "../includes/GameObject.hpp"
 #include <ncurses.h>
 #include <unistd.h>
 
@@ -23,20 +23,20 @@ void	beginGame(WINDOW *win, GameObject game, int yMax, int xMax)
 		key_pressed = getch();
 
 		// update all entities on board (move missiles, enemies, player or create new entities)
-		game.update(key_pressed);
+		game.update(key_pressed, yMax, xMax);
 
 		//Once all the characters are updated, we can re draw the board
 		clear();
-		game.draw();
+		game.draw(win);
 		refresh();
 	}
+
 	return;
 }
 
 int	main(void)
 {
 	int yMax, xMax;
-	WINDOW *win;
 
 	//inititate ncurses
 	initscr();
@@ -49,7 +49,7 @@ int	main(void)
 	GameObject game(yMax, xMax);
 
 	//create window
-	win = newwin(yMax - 1 , xMax - 1, 0, 0);
+	WINDOW * win = newwin(yMax - 1 , xMax - 1, 0, 0);
 	//get arrow inputs
 	keypad(win, true);
 

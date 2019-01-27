@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Board.hpp"
-#include "Display.hpp"
+#include "../includes/Board.hpp"
+#include "../includes/Display.hpp"
 
 Board::Board(void) : _board(NULL), _yMax(0), _xMax(0) {
     return;
@@ -59,7 +59,9 @@ void Board::addDisplay(Display* const display) {
 ** If there is a collision, we delete both objects from the board
 ** If the player collides with an enemy, we return true and the game is over
 */
-bool Board::update(void) {
+bool Board::update(int yMax, int xMax) {
+    updateShooters(yMax, xMax);
+    updateEnemies(yMax, xMax);
     return false;
 }
 

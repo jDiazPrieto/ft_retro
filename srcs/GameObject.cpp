@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "GameObject.hpp"
+#include "../includes/GameObject.hpp"
 
 GameObject::GameObject(void) : _player(NULL), _board(NULL), _score(0), _done(false) {
     return;
@@ -79,9 +79,9 @@ void GameObject::createShooter(void) {
 ** After taking the user's input, we call the board's update function
 ** Once all the entities on the board are updated, we add a new Enemy
 */
-void GameObject::update(int key) {
+void GameObject::update(int key, int yMax, int xMax) {
     this->_player->direction(key);
-    this->_done = this->_board->update();
+    this->_done = this->_board->update(yMax, xMax);
     if (key == (int)' ')
         this->createShooter();
     this->createEnemy();
@@ -89,7 +89,7 @@ void GameObject::update(int key) {
 }
 
 // check if game is over, if not we call the board's draw function
-void GameObject::draw(void) const {
+void GameObject::draw(WINDOW * win) const {
     if (this->_done) {
         //DRAW GAME OVER
     }

@@ -21,6 +21,7 @@
 #include <ncurses.h>
 #include "Board.hpp"
 #include <cstdlib>
+#include <ncurses.h>
 
 class GameObject {
 
@@ -48,8 +49,8 @@ public:
     bool isDone(void) const;
     void createEnemy(void);
     void createShooter(void);
-    void update(int key);
-    void draw(void) const;
+    void update(int key, int yMax, int xMax);
+    void draw(WINDOW * win) const;
 
     //getter functions
     Player* getPlayer(void) const;
