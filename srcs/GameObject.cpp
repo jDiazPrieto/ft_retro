@@ -67,6 +67,8 @@ void GameObject::createShooter(void) {
     // We only add a shooter if the spot is empty
     if (this->_board->getBoard()[y][x] == NULL)
         this->_board->addDisplay(shooter);
+    else
+        delete shooter;
     return;
 }
 
