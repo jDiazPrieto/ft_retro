@@ -77,6 +77,7 @@ void GameObject::createShooter(void) {
 ** If the user presses the space bar, we create a new missile and add it to the board
 ** If the user moves the player, we update the player's direction variables
 ** After taking the user's input, we call the board's update function 
+** Once all the entities on the board are updated, we add a new Enemy
 */
 void GameObject::update(int key) {
     this->_player->direction(key);
