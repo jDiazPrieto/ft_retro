@@ -28,3 +28,15 @@ Shoot::Shoot(Shoot & src) : Display(src) {
 Shoot::~Shoot(void) {
     return;
 }
+
+Shoot & Shoot::operator=(Shoot const & rhs) {
+    this->_yCord = rhs.getYCord();
+    this->_xCord = rhs.getXCord();
+    this->_yDirection = rhs.getYDirection();
+    this->_xDirection = rhs.getXDirection();
+    return *this;
+}
+
+char Shoot::getType(void) const {
+    return 'o';
+}

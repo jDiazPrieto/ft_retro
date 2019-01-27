@@ -30,16 +30,23 @@ public:
 	Display(Display & src);
 	~Display(void);
 
+	//operator overloads
+	Display & operator=(Display const & src);
+
 	// setter functions
-	void setYCord(void);
-	void setXCord(void);
+	void setYCord(int y);
+	void setXCord(int x);
 	
 	//getter functions
 	int	getYCord(void) const;
 	int getXCord(void) const;
-
-	void update(void) const;
+	int getYDirection(void) const;
+	int getXDirection(void) const;
+	virtual char getType(void) const = 0;
+	
+	void update(void) ;
 	void draw(void) const;
+	
 
 private:
 };

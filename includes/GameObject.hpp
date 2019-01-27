@@ -19,15 +19,17 @@
 #include "Enemy.hpp"
 #include "Shoot.hpp"
 #include <ncurses.h>
+#include "Board.hpp"
+#include <cstdlib>
 
 class GameObject {
 
 private:
 
-    Player  _player;
-    Enemy   *_enemies;
-    Shoot   *_shooters;
-    int     **_board;
+    Player  *_player;
+    //Enemy   *_enemies;
+    //Shoot   *_shooters;
+    Board   *_board;
     int     _score;
     bool    _done;
 
@@ -36,15 +38,23 @@ private:
 public:
 
     //constructors
-    GameObject(int Ymax, int Xmax);
+    GameObject(int yMax, int xMax);
     GameObject(GameObject const & src);
     ~GameObject(void);
 
+    //operator overloads
+    GameObject & operator=(GameObject const & rhs);
+
     bool isDone(void) const;
-    void createEnemy(int y, int x);
-    void createShooter(int y, int x);
+    void createEnemy(void);
+    void createShooter(void);
     void update(int key);
     void draw(void) const;
+
+    //getter functions
+    Player* getPlayer(void) const;
+    Board*  getBoard(void) const;
+    int     getScore(void) const;
 };
 
 #endif

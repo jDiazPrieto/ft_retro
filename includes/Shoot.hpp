@@ -24,10 +24,15 @@ public:
     Shoot(Shoot & src);
     ~Shoot(void);
 
-private:
+    //operator overloads
+    Shoot & operator=(Shoot const & src);
 
+    char getType(void) const;
+    
+private:
      //constructors
-    Shoot(void);  
+    Shoot(void); 
+
 };
 
 #endif

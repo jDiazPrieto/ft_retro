@@ -12,12 +12,13 @@
 
 #include "../includes/Display.hpp"
 
+//constructors
 Display::Display(void) : _yCord(0), _xCord(0), _yDirection(0), _xDirection(0){
     return;
 }
 
 Display::Display(int yCord, int xCord, int yDirection, int xDirection) :
-    _yCord(yCord), _xCord(xCord), _yDirection(yDirection), _xDirection(0) {
+    _yCord(yCord), _xCord(xCord), _yDirection(yDirection), _xDirection(xDirection) {
     return;
 }
 
@@ -30,3 +31,46 @@ Display::~Display(void) {
     return;
 }
 
+//operator overloads
+Display & Display::operator=(Display const & src) {
+    this->_yCord = src.getYCord();
+    this->_xCord = src.getXCord();
+    this->_yDirection = src.getYDirection();
+    this->_xDirection = src.getXDirection();
+    return *this;
+}
+
+//setter functions
+void Display::setYCord(int y) {
+    this->_yCord = y;
+}
+
+void Display::setXCord(int x) {
+    this->_xCord = x;
+}
+
+//getter functions
+int Display::getYCord(void) const {
+    return this->_yCord;
+}
+
+int Display::getXCord(void) const {
+    return this->_xCord;
+}
+
+int Display::getYDirection(void) const {
+    return this->_yDirection;
+}
+
+int Display::getXDirection(void) const {
+    return this->_xDirection;
+}
+
+void Display::update(void) {
+    this->_xCord += this->_xDirection;
+    this->_yCord += this->_yDirection;
+}
+
+void Display::draw(void) const {
+    return;
+}

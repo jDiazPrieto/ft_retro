@@ -17,12 +17,18 @@
 
 class Enemy : public Display {
 
+private:
+    Enemy(void);
+
 public:
     //constructors
-    Enemy(void);
     Enemy(int yPos, int xPos);
     Enemy(Enemy & src);
     ~Enemy(void);
+
+    Enemy & operator=(Enemy const & rhs);
+
+    char getType(void) const;
 };
 
 #endif

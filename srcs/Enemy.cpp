@@ -12,13 +12,12 @@
 
 #include "../includes/Enemy.hpp"
 
+//constructors
 Enemy::Enemy(void) : Display() {
-    //generate random position here
     return;
 }
 
 Enemy::Enemy(int yPos, int xPos) : Display(yPos, xPos, 0, -1) {
-    //generate random position here
     return;
 }
 
@@ -29,4 +28,17 @@ Enemy::Enemy(Enemy & src) : Display(src) {
 
 Enemy::~Enemy(void) {
     return;
+}
+
+//operator overloads
+Enemy & Enemy::operator=(Enemy const & rhs) {
+    this->_yCord = rhs.getYCord();
+    this->_xCord = rhs.getXCord();
+    this->_yDirection = rhs.getYDirection();
+    this->_xDirection = rhs.getXDirection();
+    return *this;
+}   
+
+char Enemy::getType(void) const {
+    return ('e');
 }
