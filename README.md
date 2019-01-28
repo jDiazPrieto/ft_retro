@@ -18,3 +18,7 @@ You can move around the board and fire at enemies. If one of the invaders touche
 ## How to run the game ##
 
 clone this repository and run *make* in the root of the repository. Simply run *./ft_retro* and the game will begin.
+
+🇨🇦 [Julian Diaz](https://github.com/diazjuli)
+
+🇯🇴 [Zeid Tisnes](https://github.com/zedin27)
