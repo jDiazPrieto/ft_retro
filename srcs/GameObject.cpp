@@ -28,6 +28,7 @@ GameObject::GameObject(int yMax, int xMax) {
     printw("Player: yCord: %d, xCord: %d, xDir: %d, yDir: %d\n",
         this->_player->getYCord(), this->_player->getXCord(),
         this->_player->getXDirection(), this->_player->getYDirection());
+    
     return;
 }
 
@@ -57,8 +58,8 @@ void GameObject::createEnemy(void) {
     int y;
     int x;
 
-    y = rand() % this->_board->getYMax();
-    x = this->_board->getXMax();
+    y = rand() % (this->_board->getYMax() - 2);
+    x = this->_board->getXMax() - 1;
     Enemy *enemy = new Enemy(y, x);
     this->_board->addDisplay(enemy);
     return;
@@ -87,11 +88,13 @@ void GameObject::createShooter(void) {
 ** Once all the entities on the board are updated, we add a new Enemy
 */
 void GameObject::update(int key, int yMax, int xMax) {
-    printw("Updating game");
+    printw("Updating game\n");
     this->_done = this->_board->update(yMax, xMax, this->_player, key);
-    //this->_player->direction(key);
-    if (key == (int)' ')
+    if (this->_done)
+        return;
+    if (key == (int)' ') {
         this->createShooter();
+    }
     this->createEnemy();
     return;
 }
@@ -99,7 +102,6 @@ void GameObject::update(int key, int yMax, int xMax) {
 // check if game is over, if not we call the board's draw function
 void GameObject::draw(WINDOW * win) const {
     if (this->_done) {
-        //DRAW GAME OVER
         printw("GAMEOVER");
     }
     else {

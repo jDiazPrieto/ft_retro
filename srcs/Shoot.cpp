@@ -17,6 +17,7 @@ Shoot::Shoot(void) : Display() {
 }
 
 Shoot::Shoot(int yCord, int xCord) : Display(yCord, xCord, 0, 1) {
+    printw("Created new shooter at y: %d x: %d\n", yCord, xCord);
     return;
 }
 

@@ -18,6 +18,8 @@ Enemy::Enemy(void) : Display() {
 }
 
 Enemy::Enemy(int yPos, int xPos) : Display(yPos, xPos, 0, -1) {
+
+    printw("Creater new enemy at y: %d x: %d\n", yPos, xPos);
     return;
 }
 

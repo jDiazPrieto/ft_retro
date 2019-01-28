@@ -54,6 +54,10 @@ void Board::addDisplay(Display* const display) {
 }
 
 bool Board::handleCollision(Display *a, Display *b) {
+    if (a->getType() == 'p' || b->getType() == 'p') 
+        clear();
+    printw("Handling collision (%c)-(%c) (%d, %d)\n", a->getType(),
+        b->getType(), a->getYCord(), a->getXCord());
     if (a->getType() == 'p' || b->getType() == 'p') {
         return true;
     }
@@ -87,10 +91,13 @@ bool Board::updatePlayer(int yMax, int xMax, int key, Player* player) {
     player_x = player->getXCord();
     player_y = player->getYCord();
     player->direction(key, yMax, xMax);
-    if (this->_board[player->getYCord()][player->getXCord()])
+    printw("player move: (%d, %d) -> (%d, %d)\n",
+        player_y, player_x, player->getYCord(), player->getXCord());
+    if (this->_board[player->getYCord()][player->getXCord()] &&
+        this->_board[player->getYCord()][player->getXCord()]->getType() != 'p')
         return (true);
-    this->_board[player->getYCord()][player->getXCord()] = player;
     this->_board[player_y][player_x] = NULL;
+    this->_board[player->getYCord()][player->getXCord()] = player;
     return false;
 }
 
@@ -100,25 +107,31 @@ bool Board::updatePlayer(int yMax, int xMax, int key, Player* player) {
 ** If the enemy is at the beginning of the board, we delete it. 
 */
 bool Board::updateEnemies(int yMax, int xMax) {
+    printw("Updating enemies\n");
     for (int i = 0; i < xMax; i++) {
         for (int j = 0; j < yMax; j++) {
-            if (this->_board[j][i]->getType() == 'e') {
+            if (this->_board[j][i] && this->_board[j][i]->getType() == 'e') {
                 if (i == 0) {
                     delete this->_board[j][i];
+                    printw("Enemy got to end of board, deleted enemy\n");
                 }
                 else if (this->_board[j][i - 1]) {
                     if (this->handleCollision(this->_board[j][i], this->_board[j][i - 1]))
                         return true;
                     this->_board[j][i - 1] = NULL;
+                    printw("Collision at: y: %d, x: %d between shooter and enemy\n", j, i - 1);
                 }
                 else {
                     this->_board[j][i]->update();
                     this->_board[j][i - 1] = this->_board[j][i];
+                    printw("enemy move: (%d, %d) -> (%d, %d)\n",
+                        j, i, j, i - 1);
+    
                 }
                 this->_board[j][i] = NULL;
             }
         }
-    }    
+    }
     return false;
 }
 
@@ -127,20 +140,23 @@ bool Board::updateEnemies(int yMax, int xMax) {
 ** If the shooter is at the end of the board (xMax - 1), we delete it. 
 */
 void Board::updateShooters(int yMax, int xMax) {
-    for (int i = xMax - 2; i >= 0; i --) {
-        for (int j = 0; j < yMax; j++) {
-            if (this->_board[j][i]->getType() == '-') {
+    printw("Updating shooters\n");
+    for (int i = xMax - 2; i >= 0; i--) {
+        for (int j = 0; j < yMax - 1; j++) {
+            if (this->_board[j][i] && this->_board[j][i]->getType() == 's') {
                 if (i == xMax - 2) {
-                    delete this->_board[j][i];
+                    printw("shooter got to end of board, deleted shooter\n");
                 }
-                else if (this->_board[j][i + 1]->getType() == 'e') {
+                else if (this->_board[j][i + 1] && this->_board[j][i + 1]->getType() == 'e') {
                     this->handleCollision(this->_board[j][i], this->_board[j][i + 1]);
                     this->_board[j][i + 1] = NULL; 
+                    printw("Collision at: y: %d, x: %d between shooter and enemy\n", j, i + 1);
                 }
                 else {
                     this->_board[j][i]->update();
                     this->_board[j][i + 1] = this->_board[j][i];
-                }
+                    printw("shooter move: (%d, %d) -> (%d, %d)\n",
+                        j, i, j, i + 1);}
                 this->_board[j][i] = NULL;
             }
         }
@@ -148,7 +164,14 @@ void Board::updateShooters(int yMax, int xMax) {
 }
 
 void Board::draw(WINDOW *win) const {
-    box(win, 0, 0);
+    for (int i = 0; i < this->_yMax - 1; i++) {
+        for (int j = 0; j < this->_xMax - 1; j++) {
+            if (this->_board[i][j]) {
+                mvprintw(i, j, "%c", this->_board[i][j]->getType());
+            }  
+        }
+    }
+    (void)win;
     return;
 }
 

@@ -35,14 +35,14 @@ Player::~Player(void)
 
 Shoot* Player::shootMissile(void)
 {
-	Shoot *missile = new Shoot(this->_xCord + 1, this->_yCord);
+	Shoot *missile = new Shoot(this->_yCord, this->_xCord + 1);
 	return (missile);
 }
 void Player::direction(int key_input, int yMax, int xMax)
 {
 	//TODO Bound checking top and bottom
 	if (key_input == KEY_UP || key_input == 'w' || key_input == 'W')
-		if (this->_yCord != yMax)
+		if (this->_yCord != yMax - 1)
 			this->_yCord++;
 	if (key_input == KEY_DOWN || key_input == 's' || key_input == 'S')
 		if (this->_yCord != 0)
@@ -51,7 +51,7 @@ void Player::direction(int key_input, int yMax, int xMax)
 		if (this->_xCord != 0)
 			this->_xCord--;
 	if (key_input == KEY_RIGHT || key_input == 'd' || key_input == 'D')
-		if (this->_yCord != xMax)
+		if (this->_yCord != xMax - 1)
 			this->_xCord++;
 	return ;
 }
