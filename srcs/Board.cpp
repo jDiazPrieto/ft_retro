@@ -6,7 +6,7 @@
 /*   By: jdiaz <jdiaz@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/26 23:48:56 by jdiaz             #+#    #+#             */
-/*   Updated: 2019/01/27 09:18:48 by ztisnes          ###   ########.fr       */
+/*   Updated: 2019/01/27 20:20:55 by ztisnes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "../includes/Display.hpp"
 
 Board::Board(void) : _board(NULL), _yMax(0), _xMax(0) {
+	Display::pew("sounds/rs.mp3");
     return;
 }
 
@@ -54,7 +55,7 @@ void Board::addDisplay(Display* const display) {
 }
 
 bool Board::handleCollision(Display *a, Display *b) {
-    if (a->getType() == 'p' || b->getType() == 'p') 
+    if (a->getType() == 'p' || b->getType() == 'p')
         clear();
     printw("Handling collision (%c)-(%c) (%d, %d)\n", a->getType(),
         b->getType(), a->getYCord(), a->getXCord());
@@ -104,7 +105,7 @@ bool Board::updatePlayer(int yMax, int xMax, int key, Player* player) {
 /*
 ** Here we move each enemy object one step to the left. If they collide with a shooter, we delete both.
 ** If it collides with the player then the game is over and we return true.
-** If the enemy is at the beginning of the board, we delete it. 
+** If the enemy is at the beginning of the board, we delete it.
 */
 bool Board::updateEnemies(int yMax, int xMax) {
     printw("Updating enemies\n");
@@ -126,7 +127,7 @@ bool Board::updateEnemies(int yMax, int xMax) {
                     this->_board[j][i - 1] = this->_board[j][i];
                     printw("enemy move: (%d, %d) -> (%d, %d)\n",
                         j, i, j, i - 1);
-    
+
                 }
                 this->_board[j][i] = NULL;
             }
@@ -137,7 +138,7 @@ bool Board::updateEnemies(int yMax, int xMax) {
 
 /*
 ** Here we move each shooter object one step to the right. If they collide with an Enemy, we delete both.
-** If the shooter is at the end of the board (xMax - 1), we delete it. 
+** If the shooter is at the end of the board (xMax - 1), we delete it.
 */
 void Board::updateShooters(int yMax, int xMax) {
     printw("Updating shooters\n");
@@ -149,7 +150,7 @@ void Board::updateShooters(int yMax, int xMax) {
                 }
                 else if (this->_board[j][i + 1] && this->_board[j][i + 1]->getType() == 'e') {
                     this->handleCollision(this->_board[j][i], this->_board[j][i + 1]);
-                    this->_board[j][i + 1] = NULL; 
+                    this->_board[j][i + 1] = NULL;
                     printw("Collision at: y: %d, x: %d between shooter and enemy\n", j, i + 1);
                 }
                 else {
@@ -168,7 +169,7 @@ void Board::draw(WINDOW *win) const {
         for (int j = 0; j < this->_xMax - 1; j++) {
             if (this->_board[i][j]) {
                 mvprintw(i, j, "%c", this->_board[i][j]->getType());
-            }  
+            }
         }
     }
     (void)win;

@@ -12,7 +12,8 @@ Player::Player(Player const & src) : Display() {
 
 Player::Player(int xPos, int yPos) : Display()
 {
-	printw("Creater new player\n");
+	Display::pew("sounds/rs.mp3");
+	printw("Create new player\n");
 	this->_xCord = xPos * 0;
 	this->_yCord = yPos / 2;
 	this->_health = 1;
@@ -36,15 +37,16 @@ Player::~Player(void)
 Shoot* Player::shootMissile(void)
 {
 	Shoot *missile = new Shoot(this->_yCord, this->_xCord + 1);
+	Display::pew("sounds/pew.wav");
 	return (missile);
 }
 void Player::direction(int key_input, int yMax, int xMax)
 {
 	//TODO Bound checking top and bottom
-	if (key_input == KEY_UP || key_input == 'w' || key_input == 'W')
+	if (key_input == KEY_UP || key_input == 's' || key_input == 'S')
 		if (this->_yCord != yMax - 1)
 			this->_yCord++;
-	if (key_input == KEY_DOWN || key_input == 's' || key_input == 'S')
+	if (key_input == KEY_DOWN || key_input == 'w' || key_input == 'W')
 		if (this->_yCord != 0)
 			this->_yCord--;
 	if (key_input == KEY_LEFT || key_input == 'a' || key_input == 'A')

@@ -6,7 +6,7 @@
 /*   By: jdiaz <jdiaz@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/26 17:04:38 by jdiaz             #+#    #+#             */
-/*   Updated: 2019/01/27 11:17:33 by ztisnes          ###   ########.fr       */
+/*   Updated: 2019/01/27 20:12:35 by ztisnes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,13 @@ int Display::getYDirection(void) const {
 
 int Display::getXDirection(void) const {
     return this->_xDirection;
+}
+
+void Display::pew(std::string soundFile)
+{
+	std::string command = "afplay " + soundFile + " &";
+	std::system(command.c_str());
+	return ;
 }
 
 void Display::update(void) {
