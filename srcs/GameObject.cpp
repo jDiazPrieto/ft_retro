@@ -21,14 +21,7 @@ GameObject::GameObject(int yMax, int xMax) {
     this->_player = new Player(xMax, yMax);
     this->_board = new Board(yMax, xMax);
     this->_score = 0;
-    this->_done = false;
-
-    printw("Game Object: score: %d, isDone: %d, player*: %p, board*: %p\n",
-        this->_score, this->_done, this->_player, this->_board);
-    printw("Player: yCord: %d, xCord: %d, xDir: %d, yDir: %d\n",
-        this->_player->getYCord(), this->_player->getXCord(),
-        this->_player->getXDirection(), this->_player->getYDirection());
-    
+    this->_done = false;    
     return;
 }
 
@@ -40,7 +33,7 @@ GameObject::GameObject(GameObject const & src) {
 GameObject::~GameObject(void) {
     //Need to delete all dynamically allocated objects
     //delete this->_player;
-    delete this->_board;
+    //delete this->_board;
     return;
 }
 
@@ -102,7 +95,7 @@ void GameObject::update(int key, int yMax, int xMax) {
 // check if game is over, if not we call the board's draw function
 void GameObject::draw(WINDOW * win) const {
     if (this->_done) {
-        printw("GAMEOVER");
+        printw("GAMEOVER\n");
     }
     else {
         this->_board->draw(win);

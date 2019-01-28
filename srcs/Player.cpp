@@ -42,9 +42,8 @@ Shoot* Player::shootMissile(void)
 }
 void Player::direction(int key_input, int yMax, int xMax)
 {
-	//TODO Bound checking top and bottom
 	if (key_input == KEY_UP || key_input == 's' || key_input == 'S')
-		if (this->_yCord != yMax - 1)
+		if (this->_yCord != yMax - 2)
 			this->_yCord++;
 	if (key_input == KEY_DOWN || key_input == 'w' || key_input == 'W')
 		if (this->_yCord != 0)

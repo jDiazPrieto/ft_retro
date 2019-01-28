@@ -57,8 +57,6 @@ void Board::addDisplay(Display* const display) {
 bool Board::handleCollision(Display *a, Display *b) {
     if (a->getType() == 'p' || b->getType() == 'p')
         clear();
-    printw("Handling collision (%c)-(%c) (%d, %d)\n", a->getType(),
-        b->getType(), a->getYCord(), a->getXCord());
     if (a->getType() == 'p' || b->getType() == 'p') {
         return true;
     }
