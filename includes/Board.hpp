@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Board.h                                            :+:      :+:    :+:   */
+/*   Board.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdiaz <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: jdiaz <jdiaz@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/26 22:18:46 by jdiaz             #+#    #+#             */
-/*   Updated: 2019/01/26 22:23:53 by jdiaz            ###   ########.fr       */
+/*   Updated: 2019/01/27 20:01:40 by ztisnes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 #include <string>
 #include "Display.hpp"
-#include "Player.hpp" 
+#include "Player.hpp"
 
 class Board {
 
@@ -35,12 +35,12 @@ private:
 	bool handleCollision(Display *a, Display * b);
 
 public:
-	
+
 	//constructors
 	Board(int yMax, int xMax);
 	Board(Board const & src);
 	~Board(void);
-	
+
 	// operator overloads
 	Board & operator=(Board const & src);
 
@@ -52,7 +52,7 @@ public:
 	Display*** getBoard(void) const;
 	int		getYMax(void) const;
 	int		getXMax(void) const;
-	
+
 };
 
 #endif

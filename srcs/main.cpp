@@ -6,7 +6,7 @@
 /*   By: jdiaz <jdiaz@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/26 17:58:47 by jdiaz             #+#    #+#             */
-/*   Updated: 2019/01/27 11:49:20 by ztisnes          ###   ########.fr       */
+/*   Updated: 2019/01/27 20:27:14 by ztisnes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	main(void)
 	GameObject game(yMax, xMax);
 	//create window
 	WINDOW * win = newwin(yMax - 1 , xMax - 1, 0, 0);
-	
+
 	printw("Createed window\n");
 	//get arrow inputs
 	keypad(win, true);
@@ -61,5 +61,6 @@ int	main(void)
 
 	//game is over
 	endwin();
+	std::system("pkill -f afplay");
 	return (0);
 }

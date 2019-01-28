@@ -6,7 +6,7 @@
 /*   By: jdiaz <jdiaz@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/26 16:24:56 by jdiaz             #+#    #+#             */
-/*   Updated: 2019/01/27 11:37:40 by ztisnes          ###   ########.fr       */
+/*   Updated: 2019/01/27 19:47:02 by ztisnes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ public:
 	int getXDirection(void) const;
 	virtual char getType(void) const = 0;
 
+	static void pew(std::string soundFile);
 	void update(void) ;
 	void draw(void) const;
 
