@@ -25,6 +25,7 @@ Board::Board(int yMax, int xMax) : _board(NULL), _yMax(yMax), _xMax(xMax) {
             this->_board[i][j] = NULL;
         }
     }
+    printw("Created new board");
     return;
 }
 
@@ -127,7 +128,7 @@ bool Board::updateEnemies(int yMax, int xMax) {
 */
 void Board::updateShooters(int yMax, int xMax) {
     for (int i = xMax - 2; i >= 0; i --) {
-        for (int j = 0; j < yMax; i++) {
+        for (int j = 0; j < yMax; j++) {
             if (this->_board[j][i]->getType() == '-') {
                 if (i == xMax - 2) {
                     delete this->_board[j][i];
@@ -146,7 +147,8 @@ void Board::updateShooters(int yMax, int xMax) {
     }
 }
 
-void Board::draw(void) const {
+void Board::draw(WINDOW *win) const {
+    box(win, 0, 0);
     return;
 }
 

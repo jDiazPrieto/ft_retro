@@ -17,10 +17,17 @@ GameObject::GameObject(void) : _player(NULL), _board(NULL), _score(0), _done(fal
 }
 
 GameObject::GameObject(int yMax, int xMax) {
+    printw("Creating Game object\n");
     this->_player = new Player(xMax, yMax);
     this->_board = new Board(yMax, xMax);
     this->_score = 0;
     this->_done = false;
+
+    printw("Game Object: score: %d, isDone: %d, player*: %p, board*: %p\n",
+        this->_score, this->_done, this->_player, this->_board);
+    printw("Player: yCord: %d, xCord: %d, xDir: %d, yDir: %d\n",
+        this->_player->getYCord(), this->_player->getXCord(),
+        this->_player->getXDirection(), this->_player->getYDirection());
     return;
 }
 
@@ -80,6 +87,7 @@ void GameObject::createShooter(void) {
 ** Once all the entities on the board are updated, we add a new Enemy
 */
 void GameObject::update(int key, int yMax, int xMax) {
+    printw("Updating game");
     this->_done = this->_board->update(yMax, xMax, this->_player, key);
     //this->_player->direction(key);
     if (key == (int)' ')
@@ -92,9 +100,10 @@ void GameObject::update(int key, int yMax, int xMax) {
 void GameObject::draw(WINDOW * win) const {
     if (this->_done) {
         //DRAW GAME OVER
+        printw("GAMEOVER");
     }
     else {
-        this->_board->draw();
+        this->_board->draw(win);
     }
     return;
 }

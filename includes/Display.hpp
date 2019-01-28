@@ -12,7 +12,9 @@
 
 #ifndef DISPLAY_HPP
 # define DISPLAY_HPP
-// Add a sprite for the player's ship, enemy's ship, and the shoot
+#include <string>
+#include <iostream>
+#include <ncurses.h>
 
 class Display {
 
