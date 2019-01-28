@@ -13,7 +13,6 @@
 #ifndef PLAYER_HPP
 #define PLAYER_HPP
 
-#include "GameObject.hpp"
 #include "Display.hpp"
 #include "Shoot.hpp"
 
@@ -21,9 +20,6 @@ class Player : public Display
 {
 private:
 	int _health;
-	int _xPos;
-	int _yPos;
-	Shoot *_missile;
 
 public:
 	//Constructor and destructor
@@ -32,10 +28,15 @@ public:
 	Player(int xPos, int yPos);
 	~Player(void);
 
+	//operator overloads
+	Player & operator=(Player const & src);
+
 	//Member functions of Player
 	Shoot* shootMissile(void);
-	void direction(int key_input);
+	void direction(int key_input, int yMax, int xMax);
 	void takeDamage(void);
+
+	virtual char getType(void) const;
 };
 
 #endif

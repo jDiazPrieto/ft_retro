@@ -20,11 +20,14 @@ void	beginGame(WINDOW *win, GameObject game, int yMax, int xMax)
 
 	while (!game.isDone()) {
 		//wait for user to press a key
+		refresh();
+		move(0, 0);
+		halfdelay(1);
 		key_pressed = getch();
+		curs_set(0);
 
 		// update all entities on board (move missiles, enemies, player or create new entities)
 		game.update(key_pressed, yMax, xMax);
-
 		//Once all the characters are updated, we can re draw the board
 		clear();
 		game.draw(win);
@@ -47,16 +50,16 @@ int	main(void)
 
 	//initiate gameobject
 	GameObject game(yMax, xMax);
-
 	//create window
 	WINDOW * win = newwin(yMax - 1 , xMax - 1, 0, 0);
+	
+	printw("Createed window\n");
 	//get arrow inputs
 	keypad(win, true);
 
 	beginGame(win, game, yMax, xMax);
 
 	//game is over
-	getch();
 	endwin();
 	return (0);
 }

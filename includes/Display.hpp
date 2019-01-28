@@ -12,7 +12,9 @@
 
 #ifndef DISPLAY_HPP
 # define DISPLAY_HPP
-// Add a sprite for the player's ship, enemy's ship, and the shoot
+#include <string>
+#include <iostream>
+#include <ncurses.h>
 
 class Display {
 
@@ -29,7 +31,7 @@ public:
 	//constructors
 	Display(int yCord, int xCord, int yDirection, int xDirection);
 	Display(Display & src);
-	~Display(void);
+	virtual ~Display(void);
 
 	//operator overloads
 	Display & operator=(Display const & src);
@@ -43,7 +45,7 @@ public:
 	int getXCord(void) const;
 	int getYDirection(void) const;
 	int getXDirection(void) const;
-	char getType(void) const;
+	virtual char getType(void) const = 0;
 
 	void update(void) ;
 	void draw(void) const;

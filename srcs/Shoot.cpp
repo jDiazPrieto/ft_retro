@@ -10,13 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Shoot.hpp"
+#include "../includes/Shoot.hpp"
 
 Shoot::Shoot(void) : Display() {
     return;
 }
 
 Shoot::Shoot(int yCord, int xCord) : Display(yCord, xCord, 0, 1) {
+    printw("Created new shooter at y: %d x: %d\n", yCord, xCord);
     return;
 }
 
@@ -38,5 +39,5 @@ Shoot & Shoot::operator=(Shoot const & rhs) {
 }
 
 char Shoot::getType(void) const {
-    return 'o';
+    return 's';
 }

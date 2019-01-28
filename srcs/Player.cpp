@@ -1,23 +1,31 @@
-#include "Player.hpp"
+#include "../includes/Player.hpp"
 
-Player::Player(void)
+Player::Player(void) : Display()
 {
 	return ;
 }
 
-Player::Player(Player const &copy)
-{
-	*this = copy;
-	return (*this);
+Player::Player(Player const & src) : Display() {
+	*this = src;
+	return;
 }
 
-Player::Player(int xPos, int yPos)
+Player::Player(int xPos, int yPos) : Display()
 {
+	printw("Creater new player\n");
 	this->_xCord = xPos * 0;
 	this->_yCord = yPos / 2;
 	this->_health = 1;
-	this->_missile = NULL;
 	return ;
+}
+
+Player & Player::operator=(Player const & src) {
+	this->_xCord = src.getXCord();
+	this->_yCord = src.getYCord();
+	this->_yDirection = src.getYDirection();
+	this->_xDirection = src.getXDirection();
+	this->_health = 1;
+	return (*this);
 }
 
 Player::~Player(void)
@@ -27,22 +35,24 @@ Player::~Player(void)
 
 Shoot* Player::shootMissile(void)
 {
-	Shoot *missile = new Shoot(this->_xCord + 1, this->_yCord);
+	Shoot *missile = new Shoot(this->_yCord, this->_xCord + 1);
 	return (missile);
 }
-void Player::direction(int key_input)
+void Player::direction(int key_input, int yMax, int xMax)
 {
 	//TODO Bound checking top and bottom
 	if (key_input == KEY_UP || key_input == 'w' || key_input == 'W')
-		//Bound check top
-		this->_yCord = _yCord++;
+		if (this->_yCord != yMax - 1)
+			this->_yCord++;
 	if (key_input == KEY_DOWN || key_input == 's' || key_input == 'S')
-		this->_yCord = _yCord--;
+		if (this->_yCord != 0)
+			this->_yCord--;
 	if (key_input == KEY_LEFT || key_input == 'a' || key_input == 'A')
-		//Bound check bottom
-		this->_xCord = _xCord--;
+		if (this->_xCord != 0)
+			this->_xCord--;
 	if (key_input == KEY_RIGHT || key_input == 'd' || key_input == 'D')
-		this->_xCord = _xCord++;
+		if (this->_yCord != xMax - 1)
+			this->_xCord++;
 	return ;
 }
 
@@ -50,4 +60,8 @@ void Player::takeDamage(void)
 {
 	_health--;
 	return ;
+}
+
+char Player::getType(void) const {
+	return 'p';
 }
