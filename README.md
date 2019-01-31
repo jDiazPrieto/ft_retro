@@ -10,7 +10,7 @@ You can move around the board and fire at enemies. If one of the invaders touche
 ## How to play ##
 
 * A: Go left
-* S: Go left
+* D: Go right
 * W: Go up
 * S: Go down
 * space key: shoot
